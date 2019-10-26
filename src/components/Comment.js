@@ -1,19 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Comment() {
+export default function Comment({ comment }) {
   return (
     <Container>
       <Avatar>
-        <Image src={require("../assets/download.png")}></Image>
+        <Image src={comment.author.avatar}></Image>
       </Avatar>
 
       <Content>
-        <UserName>Diego Fernandes</UserName>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ipsam
-        accusantium ut doloremque distinctio sequi error rerum. Molestias,
-        asperiores reiciendis beatae eius temporibus ullam architecto voluptatum
-        cum quo, molestiae reprehenderit.
+        <UserName>{comment.author.name}</UserName>
+        {comment.content}
       </Content>
     </Container>
   );

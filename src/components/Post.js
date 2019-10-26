@@ -2,26 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import Comment from "./Comment";
 
-export default function Post() {
+export default function Post({ post }) {
+  console.log("post", post);
   return (
     <Card>
       <CardHeader>
         <Avatar>
-          <AvatarImage src={require("../assets/perfil.jpg")} />
+          <AvatarImage src={post.author.avatar} />
         </Avatar>
 
         <div>
-          <AvatarName>John Doe</AvatarName>
-          <PostDate>04 jun 2019</PostDate>
+          <AvatarName>{post.author.name}</AvatarName>
+          <PostDate>{post.date}</PostDate>
         </div>
       </CardHeader>
 
-      <PostContent>
-        Pessoal, alguém sabe se a Rocketseat está contratando?
-      </PostContent>
+      <PostContent>{post.content}</PostContent>
 
       <Line />
-      <Comment />
+
+      {post.comments.map(comment => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
     </Card>
   );
 }
